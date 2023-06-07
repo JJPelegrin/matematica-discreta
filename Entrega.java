@@ -82,7 +82,7 @@ class Entrega {
       return true;
       // TO DO
     }
-
+ 
     /*
      * És cert que ∃!x ∀y. P(y) -> Q(x,y) ?
      */
