@@ -32,9 +32,9 @@ import java.util.function.Predicate;
  *
  * Podeu fer aquesta entrega en grups de com a màxim 3 persones, i necessitareu com a minim Java 8.
  * Per entregar, posau a continuació els vostres noms i entregau únicament aquest fitxer.
- * - Nom 1:
- * - Nom 2:
- * - Nom 3:
+ * - Nom 1: JOEL JAUME PELEGRIN MORENO
+ * - Nom 2: CARLOS ALEJANDRO PIZZI SALAS
+ * - Nom 3: JUANA MARIA LUNA CARVAJAL
  *
  * L'entrega es farà a través d'una tasca a l'Aula Digital que obrirem abans de la data que se us
  * hagui comunicat i vos recomanam que treballeu amb un fork d'aquest repositori per seguir més
@@ -60,14 +60,59 @@ class Entrega {
      * És cert que ∀x ∃!y. P(x) -> Q(x,y) ?
      */
     static boolean exercici1(int[] universe, Predicate<Integer> p, BiPredicate<Integer, Integer> q) {
-      return false; // TO DO
+      for (int x : universe) {
+        boolean existeY = false;
+        boolean unicaY = true;
+        for (int y : universe) {
+          if (p.test(x)) {
+            if (q.test(x, y)) {
+              if (existeY) {
+                unicaY = false;
+                break;
+              } else {
+                existeY = true; 
+              }
+            }
+          }
+        }
+        if (p.test(x) && (!existeY || !unicaY)) {
+          return false; 
+        }
+      }
+      return true;
+      // TO DO
     }
 
     /*
      * És cert que ∃!x ∀y. P(y) -> Q(x,y) ?
      */
     static boolean exercici2(int[] universe, Predicate<Integer> p, BiPredicate<Integer, Integer> q) {
-      return false; // TO DO
+      boolean unicoX = false;
+      for (int x : universe) {
+        boolean existeX = true;
+        
+          for(int y : universe) {
+            if(!(p.test(y) && q.test(x,y))){
+              exiteX = false;
+              break;
+            }
+          }
+
+          if(existeX){
+            if(unicoX){
+              unicoX = false;
+              return false;
+            }else{
+              unicoX = true;
+            }
+          }
+      }
+      if ( !unicoX ) {
+        return false;
+      } else {
+        return true; // TO DO
+      }
+      
     }
 
     /*
