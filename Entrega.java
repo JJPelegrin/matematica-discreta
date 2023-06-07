@@ -93,7 +93,7 @@ class Entrega {
         
           for(int y : universe) {
             if(!(p.test(y) && q.test(x,y))){
-              exiteX = false;
+              existeX = false;
               break;
             }
           }
