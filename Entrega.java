@@ -255,7 +255,37 @@ class Entrega {
      * Podeu soposar que `a` està ordenat de menor a major.
      */
     static boolean exercici1(int[] a, int[][] rel) {
-      return false; // TO DO
+      
+      if (a.length == 0 || a.length == 1) {
+        return false;
+      }
+      
+      for (int element : a) {
+        if (!rel(element, element, rel)) {
+            return false; //no es reflexiva
+        }
+      }
+      
+      for (int element1 : a) {
+        for (int element2 : a) {
+            if (rel(element1, element2, rel) != rel(element2, element1, rel)) {
+                return false; // no es simetrica
+            }
+        }
+      }
+      
+      for (int element1 : a) {
+        for (int element2 : a) {
+            for (int element3 : a) {
+                if (rel(element1, element2, rel) && rel(element2, element3, rel) && !rel(element1, element3, rel)) {
+                    return false; // no es transitiva
+                }
+            }
+        }
+      }
+      
+      return true; // es compleixen les condicions per que rel sigui d'equivalencia
+      // TO DO
     }
 
     /*
